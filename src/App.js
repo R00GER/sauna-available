@@ -5,24 +5,18 @@ import Navigation from './components/Navigation';
 import LoginForm from './views/login/LoginForm';
 
 const App = () => {
-  const [user, setUser] = useState('');
-
-  const login = ({ username, password }) => {
-    const log = 'admin';
-
-    if (username === log && password === log) setUser(true);
-  };
+  const [user, setUser] = useState({ username: '', condominium: '' });
 
   return (
     <div className="App">
       <Navigation user={user} />
-      {user ? (
+      {user.username ? (
         <>
-          <Main />
+          <Main condominium={user.condominium} />
           <Calendar />
         </>
       ) : (
-        <LoginForm setUser={setUser} login={login} />
+        <LoginForm setUser={setUser} />
       )}
     </div>
   );

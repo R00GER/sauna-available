@@ -17,6 +17,7 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "prettier/prettier": "error",
-    "quotes": ["error", "single"]
+    "quotes": ["error", "single"],
+    "no-console": "off"
   }
 }

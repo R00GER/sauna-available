@@ -2,12 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
 
-const CustomButtom = ({ variant, size, onClick, value, text, icon, iconProps }) => {
+const CustomButtom = ({
+  customStyles,
+  variant,
+  size,
+  onClick,
+  value,
+  text,
+  icon,
+  iconProps,
+  disabled,
+}) => {
   const iconElement = icon && React.cloneElement(icon, { ...iconProps }, null);
 
   return (
     <Button
-      style={{ background: '#1FC58E', color: 'rgb(233, 233, 233)' }}
+      style={
+        !customStyles ? { background: '#1FC58E', color: 'rgb(233, 233, 233)' } : { ...customStyles }
+      }
       variant={variant}
       size={size}
       startIcon={iconElement}
@@ -16,6 +28,7 @@ const CustomButtom = ({ variant, size, onClick, value, text, icon, iconProps }) 
           onClick(value);
         }
       }}
+      disabled={disabled}
     >
       {text}
     </Button>
@@ -26,10 +39,12 @@ CustomButtom.propTypes = {
   variant: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Object)]),
   text: PropTypes.string.isRequired,
   icon: PropTypes.node,
   iconProps: PropTypes.instanceOf(Object),
+  disabled: PropTypes.bool,
+  customStyles: PropTypes.objectOf(PropTypes.string),
 };
 
 CustomButtom.defaultProps = {
@@ -37,6 +52,8 @@ CustomButtom.defaultProps = {
   value: undefined,
   icon: undefined,
   iconProps: undefined,
+  disabled: undefined,
+  customStyles: undefined,
 };
 
 export default CustomButtom;

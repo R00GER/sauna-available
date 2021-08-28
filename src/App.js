@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Calendar from './components/Calendar';
+import Main from './views/main/Main';
+import Navigation from './components/Navigation';
+import LoginForm from './views/login/LoginForm';
 
-function App() {
+const App = () => {
+  const [user, setUser] = useState('');
+
+  const login = ({ username, password }) => {
+    const log = 'admin';
+
+    if (username === log && password === log) setUser(true);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navigation user={user} />
+      {user ? (
+        <>
+          <Main />
+          <Calendar />
+        </>
+      ) : (
+        <LoginForm setUser={setUser} login={login} />
+      )}
     </div>
   );
-}
+};
 
 export default App;

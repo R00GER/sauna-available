@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Calendar from './components/Calendar';
 import Main from './views/main/Main';
 import Navigation from './components/Navigation';
-import LoginForm from './views/login/LoginForm';
+import Login from './views/login/Login';
 
 const App = () => {
   const [user, setUser] = useState({ username: '', condominium: '' });
@@ -16,7 +16,7 @@ const App = () => {
           <Calendar />
         </>
       ) : (
-        <LoginForm setUser={setUser} />
+        <Login setUser={setUser} />
       )}
     </div>
   );

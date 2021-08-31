@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { TextField, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { TextField, Typography, makeStyles } from '@material-ui/core';
 import CustomButtom from '../../components/CustomButton';
 import translations from '../../translations';
-import loginService from '../../services/login';
 
 const useStyles = makeStyles({
   formContainer: {
@@ -27,36 +25,8 @@ const useStyles = makeStyles({
   },
 });
 
-const LoginForm = ({ setUser }) => {
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
-  const [errorMessage, setErrorMessage] = useState('');
-
+const LoginForm = ({ inputs, errorMessage, credentials, login }) => {
   const classes = useStyles();
-
-  const inputs = [
-    {
-      name: 'username',
-      label: translations.username,
-      value: credentials.username,
-      onChange: (e) => setCredentials({ ...credentials, username: e.target.value.trim() }),
-    },
-    {
-      name: 'password',
-      label: translations.password,
-      value: credentials.password,
-      onChange: (e) => setCredentials({ ...credentials, password: e.target.value.trim() }),
-    },
-  ];
-
-  const login = async () => {
-    try {
-      const { username, condominium } = await loginService.login(credentials);
-      setUser({ username, condominium });
-    } catch (error) {
-      const { message } = error.response.data;
-      setErrorMessage(message);
-    }
-  };
 
   return (
     <div className="login-container">
@@ -90,7 +60,17 @@ const LoginForm = ({ setUser }) => {
 };
 
 LoginForm.propTypes = {
-  setUser: PropTypes.func.isRequired,
+  inputs: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      label: PropTypes.string,
+      value: PropTypes.string,
+      onChange: PropTypes.func,
+    })
+  ).isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  credentials: PropTypes.objectOf(PropTypes.string).isRequired,
+  login: PropTypes.func.isRequired,
 };
 
 export default LoginForm;

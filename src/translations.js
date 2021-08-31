@@ -4,6 +4,7 @@ const translations = {
   reserve: 'Varaa',
   login: 'Kirjaudu',
   saunaAvailable: 'Sauna on vapaa',
+  logout: 'Kirjaudu ulos',
 };
 
 export default translations;

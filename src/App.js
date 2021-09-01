@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Calendar from './components/Calendar';
 import Main from './views/main/Main';
 import Navigation from './components/Navigation';
@@ -8,17 +8,19 @@ const App = () => {
   const [user, setUser] = useState({ username: '', condominium: '' });
 
   return (
-    <div className="App">
-      <Navigation user={user} />
-      {user.username ? (
-        <>
-          <Main condominium={user.condominium} />
-          <Calendar />
-        </>
-      ) : (
-        <Login setUser={setUser} />
-      )}
-    </div>
+    <Suspense fallback="loading">
+      <div className="App">
+        <Navigation user={user} />
+        {user.username ? (
+          <>
+            <Main condominium={user.condominium} />
+            <Calendar />
+          </>
+        ) : (
+          <Login setUser={setUser} />
+        )}
+      </div>
+    </Suspense>
   );
 };
 

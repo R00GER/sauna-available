@@ -1,0 +1,16 @@
+{
+  "main": {
+    "reserve": "Reserve",
+    "saunaAvailable": "Sauna is available",
+    "saunaNotAvailable": "Sauna is not available",
+    "singOut": "Sign out"
+  },
+  "forms": {
+    "username": "Username",
+    "password": "Password",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "email": "Email",
+    "commominium": "Commominium"
+  }
+}

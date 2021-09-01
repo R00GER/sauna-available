@@ -1,0 +1,16 @@
+{
+  "main": {
+    "saunaAvailable": "Sauna on vapaa",
+    "saunaNotAvailable": "Sauna on varattu",
+    "singOut": "Kirjaudu ulos",
+    "reserve": "Varaa"
+  },
+  "forms": {
+    "username": "Käyttäjätunnus",
+    "password": "Salasana",
+    "signIn": "Kirjaudu",
+    "signUp": "Rekisteröidy",
+    "email": "Sähköpostiosoite",
+    "condominium": "Taloyhtiö"
+  }
+}

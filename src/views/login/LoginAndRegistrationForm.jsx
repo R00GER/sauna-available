@@ -11,11 +11,11 @@ const useStyles = makeStyles({
     color: '#f2f2f2',
   },
   errorMessageContainer: {
-    paddingBottom: '1rem',
+    paddingBottom: '2rem',
   },
 });
 
-const LoginAndRegistrationForm = ({ inputs, errorMessage, value, onClick, btnText }) => {
+const LoginAndRegistrationForm = ({ inputs, errorMessage, value, onClick, btnText, icon }) => {
   const classes = useStyles();
 
   const disabled = Object.values(value).some((v) => v === '');
@@ -44,6 +44,7 @@ const LoginAndRegistrationForm = ({ inputs, errorMessage, value, onClick, btnTex
         onClick={onClick}
         text={btnText}
         disabled={disabled}
+        icon={icon}
       />
     </div>
   );
@@ -72,6 +73,7 @@ LoginAndRegistrationForm.propTypes = {
   value: PropTypes.objectOf(PropTypes.string).isRequired,
   onClick: PropTypes.func.isRequired,
   btnText: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
 };
 
 export default LoginAndRegistrationForm;

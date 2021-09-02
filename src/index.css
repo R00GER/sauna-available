@@ -8,12 +8,18 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-text-success: #1fc58e;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: rgb(233, 233, 233);
+
+  --color-text-primary: #f2f2f2;
 }
 
 .navigation {

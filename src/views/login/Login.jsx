@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import PostAddIcon from '@material-ui/icons/PostAdd';
 import LoginAndRegistrationForm from './LoginAndRegistrationForm';
 import loginService from '../../services/login';
 import LoginAndRegistrationFormTabs from './LoginAndRegistrationFormTabs';
@@ -12,7 +14,7 @@ const useStyles = makeStyles({
     // padding: '0 3rem 2rem 3rem',
     display: 'flex',
     flexDirection: 'column',
-    background: '#444444B3',
+    background: '#000000B3',
     zIndex: 2,
     borderRadius: 5,
   },
@@ -106,6 +108,7 @@ const Login = ({ setUser }) => {
           value={!tabIndex ? loginCredentials : registrationCredentials}
           onClick={!tabIndex ? login : register}
           btnText={!tabIndex ? t('Common:forms.signIn') : t('Common:forms.signUp')}
+          icon={!tabIndex ? <LockOpenIcon /> : <PostAddIcon />}
         />
       </div>
     </div>

@@ -18,8 +18,8 @@ const theme = createTheme({
       fontSize: [16, '!important'],
     },
     action: {
-      disabledBackground: '#c1c1c1 !important',
-      disabled: '#f2f2f2 !important',
+      disabledBackground: '#000000B3 !important',
+      disabled: '#323232 !important',
     },
   },
   overrides: {

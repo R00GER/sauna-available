@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { TextField, Typography, makeStyles } from '@material-ui/core';
+import { TextField, Typography, makeStyles, InputAdornment, IconButton } from '@material-ui/core';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import CustomButtom from '../../components/CustomButton';
 
 const useStyles = makeStyles({
@@ -13,9 +15,13 @@ const useStyles = makeStyles({
   errorMessageContainer: {
     paddingBottom: '2rem',
   },
+  icon: {
+    color: '#f2f2f2',
+  },
 });
 
 const LoginAndRegistrationForm = ({ inputs, errorMessage, value, onClick, btnText, icon }) => {
+  const [showPassword, setShowPassword] = useState(false);
   const classes = useStyles();
 
   const disabled = Object.values(value).some((v) => v === '');
@@ -25,9 +31,23 @@ const LoginAndRegistrationForm = ({ inputs, errorMessage, value, onClick, btnTex
       {inputs.map((input) => (
         <TextField
           key={input.name}
+          type={input.name === 'password' && !showPassword ? 'password' : 'text'}
           className={classes.textField}
           InputLabelProps={{ className: classes.text }}
-          InputProps={{ className: classes.text }}
+          InputProps={{
+            className: classes.text,
+            classes: {
+              adornedEnd: classes.icon,
+            },
+            endAdornment:
+              input.name === 'password' ? (
+                <IconButton onClick={() => setShowPassword(!showPassword)}>
+                  <InputAdornment className={classes.icon} position="end">
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </InputAdornment>
+                </IconButton>
+              ) : undefined,
+          }}
           variant="outlined"
           label={input.label}
           value={input.value}

@@ -18,7 +18,9 @@ const CustomButtom = ({
   return (
     <Button
       style={
-        !customStyles ? { background: '#1FC58E', color: 'rgb(233, 233, 233)' } : { ...customStyles }
+        !customStyles
+          ? { background: '#1FC58E', color: 'rgb(233, 233, 233)', fontSize: '0.8rem' }
+          : { ...customStyles }
       }
       variant={variant}
       size={size}

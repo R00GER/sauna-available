@@ -25,7 +25,7 @@ const theme = createTheme({
   overrides: {
     MuiTypography: {
       subtitle1: {
-        fontSize: 14,
+        fontSize: '0.8rem',
       },
     },
     MuiInputBase: {

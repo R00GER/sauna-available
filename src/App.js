@@ -11,7 +11,7 @@ const App = () => {
     <Suspense fallback="loading">
       <div className="App">
         <Navigation user={user} />
-        {user.username ? (
+        {!user.username ? (
           <>
             <Main condominium={user.condominium} />
             <Calendar />

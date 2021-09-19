@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Scheduler } from '@aldabil/react-scheduler';
-import fi from 'date-fns/locale/fi';
+// import fi from 'date-fns/locale/fi';
+import bookingService from '../services/booking';
 
 const Calendar = () => {
+  const [loading, setLoading] = useState(false);
   const day = {
     startHour: 6,
     endHour: 21,
@@ -24,8 +26,26 @@ const Calendar = () => {
     endHour: 21,
   };
 
-  const confirmBooking = (event, action) => {
-    console.log(event, action);
+  const confirmEditBooking = (event) => {
+    console.log(event);
+  };
+
+  const confirmBooking = async (event, action) => {
+    console.log(action);
+    if (action === 'create') {
+      console.log('inside');
+      try {
+        setLoading(true);
+        const response = await bookingService.create(event);
+        console.log('response in calender', response);
+        if (response) setLoading(false);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      confirmEditBooking(event);
+    }
   };
 
   return (
@@ -34,9 +54,9 @@ const Calendar = () => {
       week={week}
       month={month}
       view="week"
-      locale={fi}
+      loading={loading}
+      // locale={fi}
       onConfirm={confirmBooking}
-      // customEditor={() => <CustomEditor scheduler={SchedulerHelpers} />}
       events={[
         {
           event_id: 1,

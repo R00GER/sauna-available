@@ -10,7 +10,7 @@ const UserMenu = () => {
   return (
     <>
       <IconButton ref={userMenuRef} onClick={() => setAnchor(userMenuRef.current)}>
-        <AccountCircleIcon fontSize="large" />
+        <AccountCircleIcon fontSize="large" style={{ fill: '#f2f2f2' }} />
       </IconButton>
       <Menu
         id="simple-menu"

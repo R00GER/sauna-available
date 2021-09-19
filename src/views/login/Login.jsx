@@ -82,9 +82,9 @@ const Login = ({ setUser }) => {
 
   const login = async () => {
     try {
-      const { username, condominium } = await loginService.login(loginCredentials);
-      localStorage.setItem('user', JSON.stringify({ username, condominium }));
-      setUser({ username, condominium });
+      const { email, condominium, apartment } = await loginService.login(loginCredentials);
+      localStorage.setItem('user', JSON.stringify({ email, condominium, apartment }));
+      setUser({ email, condominium });
       setLoginCredentials({ email: '', password: '' });
       setErrorMessages({ ...errorMessages, registration: '' });
     } catch (error) {

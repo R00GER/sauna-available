@@ -2,10 +2,13 @@ import axios from 'axios';
 
 const baseUrl = 'http://localhost:4000';
 
+const getAll = async () => {
+  const response = await axios.get(`${baseUrl}/book`);
+  return response.data;
+};
+
 const create = async (event) => {
-  console.log('in crete', event);
   const response = await axios.post(`${baseUrl}/book`, event);
-  console.log('in create response', response.data);
   return response.data;
 };
 
@@ -14,4 +17,4 @@ const edit = async (event) => {
   return response.data;
 };
 
-export default { create, edit };
+export default { getAll, create, edit };

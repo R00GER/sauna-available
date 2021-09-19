@@ -5,16 +5,16 @@ import Navigation from './components/Navigation';
 import Login from './views/login/Login';
 
 const App = () => {
-  const [user, setUser] = useState({ username: '', condominium: '' });
+  const [user, setUser] = useState({ email: '', condominium: '' });
 
   return (
     <Suspense fallback="loading">
       <div className="App">
         <Navigation user={user} />
-        {!user.username ? (
+        {user.email ? (
           <>
             <Main condominium={user.condominium} />
-            <Calendar />
+            <Calendar user={user} />
           </>
         ) : (
           <Login setUser={setUser} />

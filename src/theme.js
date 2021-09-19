@@ -9,7 +9,7 @@ const theme = createTheme({
       main: '#ffcc80',
     },
     text: {
-      primary: '#F2F2F2',
+      primary: '#2D2D2D',
       // secondary: '#e6e6e6',
       // secondary: '#e6e6e6',
       success: '#777C1C',
